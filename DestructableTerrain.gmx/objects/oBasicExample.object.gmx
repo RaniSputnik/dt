@@ -29,6 +29,7 @@
 
 res = get_integer("Terrain scale: ", 16);
 global.terrain = terrain_create(res);
+global.terrain.image = bgDirt;
 
 // Half of the map is ground
 for(var i = 0; i &lt;= global.terrain.width; i+=1)

@@ -25,9 +25,16 @@ draw_set_blend_mode_ext(bm_zero,bm_zero);
 draw_rectangle(px1,py1,px2,py2,false);
 draw_set_blend_mode(bm_normal);
 
+// Remember the previous drawing colour, it will
+// be reset below
 var old_col = draw_get_color();
-draw_set_colour(arg_terrain.colour);
+// We are drawing the terrain as a big white blob
+// This way we can set the colour when drawing the surface
+// and we can use a really simple blend mode to draw the
+// texture (if an image has been set, see below)
+draw_set_colour(c_white);
 
+// Draw all the terrain cells in the given region
 for(var gx = arg_x1; gx < arg_x2; gx++)
 for(var gy = arg_y1; gy < arg_y2; gy++)
 {
@@ -46,7 +53,8 @@ for(var gy = arg_y1; gy < arg_y2; gy++)
             var x3 = arg_terrain.px3[i,k];
             var y3 = arg_terrain.py3[i,k];
             
-            // The terrain has no texture set
+            // If we are drawing in wireframe mode
+            // use linestrip
             if(arg_terrain.wireframe)
             {
                 draw_primitive_begin(pr_linestrip);
@@ -56,6 +64,8 @@ for(var gy = arg_y1; gy < arg_y2; gy++)
                     draw_vertex(x1,y1);
                 draw_primitive_end();
             }
+            // Otherwise draw using trianglefan - fills
+            // in the polygons
             else
             {
                 draw_primitive_begin(pr_trianglefan);
@@ -68,7 +78,10 @@ for(var gy = arg_y1; gy < arg_y2; gy++)
     }
     else
     {
-        // Speed up full square drawing by drawing sprites instead of 2 triangles.
+        // TODO it's probably faster to draw a 1px,1px sprite that we bundle with the library
+        // primitives are SO slow. (Need to test this theory)
+    
+        // Speed up full square drawing by drawing a plain old rectangle instead of 2 triangles.
         if (arg_terrain.density[arg_terrain.grid_index[gx  ,gy  ]] >= 0.5 and
             arg_terrain.density[arg_terrain.grid_index[gx+1,gy  ]] >= 0.5 and
             arg_terrain.density[arg_terrain.grid_index[gx  ,gy+1]] >= 0.5 and
@@ -81,5 +94,31 @@ for(var gy = arg_y1; gy < arg_y2; gy++)
     }
 }
 
+// Draw the terrain texture if there is an image set
+// At this point we have a white blob defining where our
+// terrain is, so all we have to do to draw the texture
+// is to fill in the areas that have alpha with the image.
+// We draw the background repeating over the updated region
+// with the blend mode dest_alpha so that the background
+// isn't drawn in the transparent areas
+if background_exists(arg_terrain.image) {
+    draw_set_blend_mode_ext(bm_dest_alpha,bm_zero);
+    var bgw = background_get_width(arg_terrain.image);
+    var bgh = background_get_height(arg_terrain.image);
+    var minx = floor(px1 / bgw) * bgw;
+    var miny = floor(py1 / bgh) * bgh;
+    var maxx = ceil(px2 / bgw) * bgw;
+    var maxy = ceil(py2 / bgh) * bgh;
+    for(var px = minx; px <= maxx; px += bgw)
+    for(var py = miny; py <= maxy; py += bgh)
+    {
+        draw_background(arg_terrain.image,px,py);        
+    }
+    draw_set_blend_mode(bm_normal);
+}
+
+// Reset the drawing surface and colour
 draw_set_colour(old_col);
 surface_reset_target();
+
+

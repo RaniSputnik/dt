@@ -20,7 +20,7 @@ terrain.height = arg_height;
 terrain.scale = arg_scale;
 terrain.triangles = 0;
 terrain.wireframe = false;
-terrain.colour = c_white;
+terrain.image = noone;
 
 // The surface that the terrain will be redrawn to
 // Will not be created until needed - helps recover
