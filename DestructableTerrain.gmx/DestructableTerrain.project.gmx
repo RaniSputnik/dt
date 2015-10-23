@@ -13,6 +13,7 @@
   <scripts name="scripts">
     <script>scripts\terrain_create.gml</script>
     <script>scripts\terrain_create_ext.gml</script>
+    <script>scripts\terrain_update.gml</script>
     <script>scripts\terrain_update_region.gml</script>
     <script>scripts\terrain_make_hole.gml</script>
     <script>scripts\terrain_draw.gml</script>

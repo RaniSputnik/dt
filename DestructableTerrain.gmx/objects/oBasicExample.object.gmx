@@ -25,8 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>res = get_integer("Terrain scale: ", 16);
-global.terrain = terrain_create_ext(0,0, room_width / res, room_height / res, res);
+            <string>/// Initialize the terrain
+
+res = get_integer("Terrain scale: ", 16);
+global.terrain = terrain_create(res);
 
 // Half of the map is ground
 for(var i = 0; i &lt;= global.terrain.width; i+=1)
@@ -86,7 +88,10 @@ terrain_make_hole(global.terrain, mouse_x,mouse_y,holesize,true)
             <kind>1</kind>
             <string>/// Toggle wireframe mode
 
-if(keyboard_check_pressed(ord('W'))) global.terrain.wireframe = !global.terrain.wireframe
+if(keyboard_check_pressed(ord('W'))) {
+    global.terrain.wireframe = !global.terrain.wireframe;
+    terrain_update(global.terrain);
+}
 </string>
           </argument>
         </arguments>
@@ -191,8 +196,8 @@ draw_text(5,5,"##triangles: " + string(global.terrain.triangles));
             <kind>1</kind>
             <string>/// Draw the terrain
 
-terrain_draw(global.terrain);
-//draw_surface(global.terrain.surface, global.terrain.x,global.terrain.y);
+//terrain_draw(global.terrain);
+draw_surface(global.terrain.surface, global.terrain.x,global.terrain.y);
 </string>
           </argument>
         </arguments>
