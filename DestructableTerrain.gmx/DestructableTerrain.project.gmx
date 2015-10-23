@@ -24,10 +24,11 @@
   </scripts>
   <objects name="objects">
     <object>objects\oTerrain</object>
-    <object>objects\oControl</object>
+    <object>objects\oExampleNavigator</object>
+    <object>objects\oBasicExample</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rmTest</room>
+    <room>rooms\rmBasicExample</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
