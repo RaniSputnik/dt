@@ -68,8 +68,12 @@ var h = surface_get_height(application_surface);
 var cx = w &gt;&gt; 1;
 
 draw_set_color(c_black);
-draw_set_halign(fa_center);
-draw_set_valign(fa_middle);
+// bug is preventing me from centering text using WebGL in Chrome
+if os_browser == browser_not_a_browser
+{
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_middle);
+}
 draw_text(cx,h-32, "Example: "+room_get_name(room));
 draw_text(cx,h-16, "Use arrow keys to navigate examples");
 </string>
