@@ -17,10 +17,11 @@
     <script>scripts\terrain_update_region.gml</script>
     <script>scripts\terrain_make_hole.gml</script>
     <script>scripts\terrain_draw.gml</script>
-    <script>scripts\terrain_draw_region.gml</script>
     <script>scripts\__create_triangles.gml</script>
     <script>scripts\__create_triangle.gml</script>
     <script>scripts\__interpolate.gml</script>
+    <script>scripts\__prepare_surface.gml</script>
+    <script>scripts\__redraw_region.gml</script>
     <script>scripts\__linear_interpolate.gml</script>
   </scripts>
   <objects name="objects">

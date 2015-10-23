@@ -22,8 +22,10 @@ terrain.triangles = 0;
 terrain.wireframe = false;
 terrain.colour = c_white;
 
-// TODO move terrain surface creation to where it's required
-// it may get destroyed and need to be recreated
+// The surface that the terrain will be redrawn to
+// Will not be created until needed - helps recover
+// from errors when the surface is freed
+terrain.surface = noone;
 
 var pw = terrain.width * terrain.scale;
 var ph = terrain.height * terrain.scale;

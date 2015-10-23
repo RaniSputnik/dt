@@ -196,8 +196,7 @@ draw_text(5,5,"##triangles: " + string(global.terrain.triangles));
             <kind>1</kind>
             <string>/// Draw the terrain
 
-//terrain_draw(global.terrain);
-draw_surface(global.terrain.surface, global.terrain.x,global.terrain.y);
+terrain_draw(global.terrain);
 </string>
           </argument>
         </arguments>

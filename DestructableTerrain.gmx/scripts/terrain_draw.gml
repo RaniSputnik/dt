@@ -3,9 +3,10 @@
 /// @param terrain The id of the terrain to draw
 
 var arg_terrain = argument0;
+draw_surface(arg_terrain.surface,arg_terrain.x,arg_terrain.y);
 
 // Calculate the region to draw
-var x1 = 0;
+/*var x1 = 0;
 var y1 = 0;
 var x2 = arg_terrain.width;
 var y2 = arg_terrain.height;
@@ -20,4 +21,4 @@ if view_enabled and view_visible[v]
 }
 
 // Do the drawing
-terrain_draw_region(arg_terrain,x1,y1,x2,y2);
+terrain_draw_region(arg_terrain,x1,y1,x2,y2);*/
