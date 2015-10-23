@@ -6,13 +6,16 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites"/>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\bgDirt</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\terrain_create_ext.gml</script>
     <script>scripts\terrain_update_region.gml</script>
     <script>scripts\terrain_make_hole.gml</script>
     <script>scripts\terrain_draw.gml</script>
+    <script>scripts\terrain_draw_region.gml</script>
     <script>scripts\__create_triangles.gml</script>
     <script>scripts\__create_triangle.gml</script>
     <script>scripts\__interpolate.gml</script>
