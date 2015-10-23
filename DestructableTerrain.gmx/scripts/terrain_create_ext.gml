@@ -5,6 +5,7 @@
 /// @param width the width of the terrain grid (in grid cells not pixels)
 /// @param height the height of the terrain grid (in grid cells not pixels)
 /// @scale The size of a cell in the terrain grid
+/// @return The terrain id
 
 var arg_x = argument0;
 var arg_y = argument1;
