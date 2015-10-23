@@ -30,6 +30,7 @@
 res = get_integer("Terrain scale: ", 16);
 global.terrain = terrain_create(res);
 global.terrain.image = bgDirt;
+terrain_set_visible_view(global.terrain,0);
 
 // Half of the map is ground
 for(var i = 0; i &lt;= global.terrain.width; i+=1)
@@ -144,6 +145,11 @@ if (vy &gt; room_height - vh) vy = room_height - vh;
 // Move the view
 view_xview[v] = vx;
 view_yview[v] = vy;
+
+// Update the viewport of the terrain
+// This is CRITICAL - if the viewport isn't moved
+// then the outer regions of the terrain won't be drawn correctly
+terrain_set_visible_view(global.terrain, 0);
 </string>
           </argument>
         </arguments>

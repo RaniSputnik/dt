@@ -27,9 +27,11 @@ terrain.image = noone;
 // from errors when the surface is freed
 terrain.surface = noone;
 
-var pw = terrain.width * terrain.scale;
-var ph = terrain.height * terrain.scale;
-terrain.surface = surface_create(pw,ph);
+// Create a viewport to clip terrain drawing
+terrain.view_gx1 = 0;
+terrain.view_gy1 = 0;
+terrain.view_gx2 = terrain.width;
+terrain.view_gy2 = terrain.height;
 
 // TODO reverse array initialization - faster to allocate array
 // memory in reverse (one big memory allocation rather than lots

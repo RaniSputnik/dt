@@ -3,22 +3,10 @@
 /// @param terrain The id of the terrain to draw
 
 var arg_terrain = argument0;
-draw_surface(arg_terrain.surface,arg_terrain.x,arg_terrain.y);
 
-// Calculate the region to draw
-/*var x1 = 0;
-var y1 = 0;
-var x2 = arg_terrain.width;
-var y2 = arg_terrain.height;
-// Only draw the squares which are inside the view
-var v = view_current;
-if view_enabled and view_visible[v] 
-{
-    x1 = max(0, floor(view_xview[v] / arg_terrain.scale));
-    y1 = max(0, floor(view_yview[v] / arg_terrain.scale));
-    x2 = min(arg_terrain.width, ceil(view_xview[v] + view_wview[v])/arg_terrain.scale);
-    y2 = min(arg_terrain.height, ceil(view_yview[v] + view_hview[v])/arg_terrain.scale);
-}
+// Calculate an adjustment for the view position
+var offset_x = arg_terrain.view_gx1 * arg_terrain.scale;
+var offset_y = arg_terrain.view_gy1 * arg_terrain.scale;
 
-// Do the drawing
-terrain_draw_region(arg_terrain,x1,y1,x2,y2);*/
+// Draw the terrain image
+draw_surface(arg_terrain.surface,arg_terrain.x+offset_x,arg_terrain.y+offset_y);

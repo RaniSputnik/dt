@@ -12,9 +12,16 @@ var arg_y1 = argument2;
 var arg_x2 = argument3;
 var arg_y2 = argument4;
 
+// TODO don't redraw outside of the current
+// visible region! It's a waste of time!
+
 // Start drawing to the terrain surface
 __prepare_surface(arg_terrain);
 surface_set_target(arg_terrain.surface);
+
+// Calculate an adjustment for the view position
+var offset_x = -arg_terrain.view_gx1 * arg_terrain.scale;
+var offset_y = -arg_terrain.view_gy1 * arg_terrain.scale;
 
 // Clear the drawing region
 var px1 = arg_x1 * arg_terrain.scale;
@@ -22,7 +29,7 @@ var py1 = arg_y1 * arg_terrain.scale;
 var px2 = arg_x2 * arg_terrain.scale - 1;
 var py2 = arg_y2 * arg_terrain.scale - 1;
 draw_set_blend_mode_ext(bm_zero,bm_zero);
-draw_rectangle(px1,py1,px2,py2,false);
+draw_rectangle(px1+offset_x,py1+offset_y,px2+offset_x,py2+offset_y,false);
 draw_set_blend_mode(bm_normal);
 
 // Remember the previous drawing colour, it will
@@ -46,12 +53,12 @@ for(var gy = arg_y1; gy < arg_y2; gy++)
         // Draw the triangles.
         for(k = 0; k < polygons; k+=1)
         {
-            var x1 = arg_terrain.px1[i,k];
-            var y1 = arg_terrain.py1[i,k];
-            var x2 = arg_terrain.px2[i,k];
-            var y2 = arg_terrain.py2[i,k];
-            var x3 = arg_terrain.px3[i,k];
-            var y3 = arg_terrain.py3[i,k];
+            var x1 = arg_terrain.px1[i,k] + offset_x;
+            var y1 = arg_terrain.py1[i,k] + offset_y;
+            var x2 = arg_terrain.px2[i,k] + offset_x;
+            var y2 = arg_terrain.py2[i,k] + offset_y;
+            var x3 = arg_terrain.px3[i,k] + offset_x;
+            var y3 = arg_terrain.py3[i,k] + offset_y;
             
             // If we are drawing in wireframe mode
             // use linestrip
@@ -87,9 +94,11 @@ for(var gy = arg_y1; gy < arg_y2; gy++)
             arg_terrain.density[arg_terrain.grid_index[gx  ,gy+1]] >= 0.5 and
             arg_terrain.density[arg_terrain.grid_index[gx+1,gy+1]] >= 0.5)
         {
-            draw_rectangle(gx*arg_terrain.scale,gy*arg_terrain.scale,
-                (gx+1)*arg_terrain.scale,(gy+1)*arg_terrain.scale,
-                arg_terrain.wireframe);
+            var x1 = gx*arg_terrain.scale + offset_x;
+            var y1 = gy*arg_terrain.scale + offset_y;
+            var x2 = (gx+1)*arg_terrain.scale + offset_x;
+            var y2 = (gy+1)*arg_terrain.scale + offset_y;
+            draw_rectangle(x1,y1,x2,y2,arg_terrain.wireframe);
         }
     }
 }
@@ -112,7 +121,7 @@ if background_exists(arg_terrain.image) {
     for(var px = minx; px <= maxx; px += bgw)
     for(var py = miny; py <= maxy; py += bgh)
     {
-        draw_background(arg_terrain.image,px,py);        
+        draw_background(arg_terrain.image,px+offset_x,py+offset_y);        
     }
     draw_set_blend_mode(bm_normal);
 }
