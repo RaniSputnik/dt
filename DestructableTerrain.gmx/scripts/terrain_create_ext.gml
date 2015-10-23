@@ -20,6 +20,14 @@ terrain.height = arg_height;
 terrain.scale = arg_scale;
 terrain.triangles = 0;
 terrain.wireframe = false;
+terrain.colour = c_white;
+
+// TODO move terrain surface creation to where it's required
+// it may get destroyed and need to be recreated
+
+var pw = terrain.width * terrain.scale;
+var ph = terrain.height * terrain.scale;
+terrain.surface = surface_create(pw,ph);
 
 // TODO reverse array initialization - faster to allocate array
 // memory in reverse (one big memory allocation rather than lots

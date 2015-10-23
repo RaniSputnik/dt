@@ -31,3 +31,18 @@ for(var gy = arg_y1; gy < arg_y2; gy++)
 
     __create_triangles(arg_terrain, p1,p2,p3,p4, gx,gy);
 }
+
+if surface_exists(arg_terrain.surface)
+{
+    surface_set_target(arg_terrain.surface);
+    var px1 = arg_x1 * arg_terrain.scale;
+    var py1 = arg_y1 * arg_terrain.scale;
+    var px2 = arg_x2 * arg_terrain.scale - 1;
+    var py2 = arg_y2 * arg_terrain.scale - 1;
+    draw_set_blend_mode_ext(bm_zero,bm_zero);
+    draw_rectangle(px1,py1,px2,py2,false);
+    draw_set_blend_mode(bm_normal);
+    terrain_draw_region(arg_terrain,arg_x1,arg_y1,arg_x2,arg_y2);
+    surface_reset_target();
+}
+

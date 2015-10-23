@@ -13,6 +13,9 @@ var arg_y1 = argument2;
 var arg_x2 = argument3;
 var arg_y2 = argument4;
 
+var old_col = draw_get_color();
+draw_set_colour(arg_terrain.colour);
+
 for(var gx = arg_x1; gx < arg_x2; gx++)
 for(var gy = arg_y1; gy < arg_y2; gy++)
 {
@@ -65,3 +68,5 @@ for(var gy = arg_y1; gy < arg_y2; gy++)
         }
     }
 }
+
+draw_set_colour(old_col);
