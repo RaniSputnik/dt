@@ -65,10 +65,10 @@ for(var gy = arg_y1; gy < arg_y2; gy++)
             if(arg_terrain.wireframe)
             {
                 draw_primitive_begin(pr_linestrip);
-                    draw_vertex(x1,y1);
-                    draw_vertex(x2,y2);
-                    draw_vertex(x3,y3);
-                    draw_vertex(x1,y1);
+                    draw_vertex(x1+1,y1+1);
+                    draw_vertex(x2+1,y2+1);
+                    draw_vertex(x3+1,y3+1);
+                    draw_vertex(x1+1,y1+1);
                 draw_primitive_end();
             }
             // Otherwise draw using trianglefan - fills
@@ -96,8 +96,8 @@ for(var gy = arg_y1; gy < arg_y2; gy++)
         {
             var x1 = gx*arg_terrain.scale + offset_x;
             var y1 = gy*arg_terrain.scale + offset_y;
-            var x2 = (gx+1)*arg_terrain.scale + offset_x;
-            var y2 = (gy+1)*arg_terrain.scale + offset_y;
+            var x2 = (gx+1)*arg_terrain.scale + offset_x - 1;
+            var y2 = (gy+1)*arg_terrain.scale + offset_y - 1;
             draw_rectangle(x1,y1,x2,y2,arg_terrain.wireframe);
         }
     }

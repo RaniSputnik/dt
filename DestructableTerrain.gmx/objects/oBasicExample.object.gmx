@@ -29,7 +29,7 @@
 
 res = get_integer("Terrain scale: ", 16);
 global.terrain = terrain_create(res);
-global.terrain.image = bgDirt;
+//global.terrain.image = bgDirt;
 terrain_set_visible_view(global.terrain,0);
 
 // Half of the map is ground
@@ -40,6 +40,8 @@ for(var j = 0; j &lt;= global.terrain.height; j+=1)
     global.terrain.density[k] = j &gt; global.terrain.height*.5;
 }
 terrain_update_region(global.terrain, 0,0, global.terrain.width, global.terrain.height);
+
+global.grid = false;
 </string>
           </argument>
         </arguments>
@@ -114,10 +116,35 @@ if(keyboard_check_pressed(ord('W'))) {
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>/// Toggle grid mode
+
+if(keyboard_check_pressed(ord('G'))) {
+    global.grid = !global.grid;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>/// Move the view
 
 var border = 32;
-var sp = 6;
+var sp = 1;
 
 var v = 0;
 var vx = view_xview[v];
@@ -204,6 +231,42 @@ draw_text(5,5,"##triangles: " + string(global.terrain.triangles));
             <string>/// Draw the terrain
 
 terrain_draw(global.terrain);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw the grid
+
+if (global.grid)
+{
+    draw_set_color(c_black);
+    draw_set_alpha(0.2);
+    for (var xx = 0; xx &lt; room_width; xx += global.terrain.scale)
+    {
+        draw_line(xx,0,xx,room_height);    
+    }
+    for (var yy = 0; yy &lt; room_height; yy += global.terrain.scale)
+    {
+        draw_line(0,yy,room_width,yy);
+    }
+    draw_set_alpha(1);
+}
 </string>
           </argument>
         </arguments>

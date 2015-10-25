@@ -20,10 +20,10 @@
 // if we can reuse the current surface.
 
 var arg_terrain = argument0;
-var arg_x1 = argument1;
-var arg_y1 = argument2;
-var arg_x2 = argument3;
-var arg_y2 = argument4;
+var arg_x1 = max(argument1,0);
+var arg_y1 = max(argument2,0);
+var arg_x2 = min(argument3,arg_terrain.width);
+var arg_y2 = min(argument4,arg_terrain.height);
 var s = arg_terrain.scale;
 
 // Remember the previous visible region
