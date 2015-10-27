@@ -28,11 +28,11 @@
             <string>/// Initialize the terrain
 
 var scale = 16;
-var w = 320;
-var h = room_height&gt;&gt;1;
+w = 320;
+h = 320;
 
-global.terrain_dirt = terrain_create_ext((room_width-w)&gt;&gt;1,0,w/scale,h/scale,scale);
-global.terrain_stone = terrain_create_ext((room_width-w)&gt;&gt;1,h,w/scale,h/scale,scale);
+global.terrain_dirt = terrain_create_ext((room_width-w)&gt;&gt;1,room_height-h*2,w/scale,h/scale,scale);
+global.terrain_stone = terrain_create_ext((room_width-w)&gt;&gt;1,room_height-h,w/scale,h,scale);
 global.terrain_dirt.image = bgDirt;
 global.terrain_stone.image = bgStone;
 </string>
@@ -93,8 +93,19 @@ if( mouse_check_button(mb_right))
             <kind>1</kind>
             <string>/// Draw the terrain
 
-terrain_draw(global.terrain_dirt);
-terrain_draw(global.terrain_stone);
+var dirt = global.terrain_dirt;
+var stone = global.terrain_stone;
+
+terrain_draw(dirt);
+terrain_draw(stone);
+
+var x1 = dirt.x;
+var y1 = dirt.y;
+var x2 = x1 + terrain_get_width(dirt);
+var y2 = y1 + terrain_get_height(dirt) + terrain_get_height(stone);
+
+draw_set_color(c_black);
+draw_rectangle(x1,y1,x2,y2,true);
 </string>
           </argument>
         </arguments>

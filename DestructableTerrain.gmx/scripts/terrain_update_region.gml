@@ -7,12 +7,10 @@
 /// @param y2 The bottom position of the region to update in the grid (exclusive)
 
 var arg_terrain = argument0;
-var arg_x1 = argument1;
-var arg_y1 = argument2;
-var arg_x2 = argument3;
-var arg_y2 = argument4;
-
-// TODO limit the region to terrain boundaries
+var arg_x1 = max(round(argument1),0);
+var arg_y1 = max(round(argument2),0);
+var arg_x2 = min(round(argument3),arg_terrain.width);
+var arg_y2 = min(round(argument4),arg_terrain.height);
 
 for(var gx = arg_x1; gx < arg_x2; gx++)
 for(var gy = arg_y1; gy < arg_y2; gy++)
