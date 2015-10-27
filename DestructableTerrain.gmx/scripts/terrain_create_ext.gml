@@ -33,6 +33,12 @@ terrain.view_gy1 = 0;
 terrain.view_gx2 = terrain.width;
 terrain.view_gy2 = terrain.height;
 
+// Debug draw region
+terrain.debug_x1 = 0;
+terrain.debug_y1 = 0;
+terrain.debug_x2 = 0;
+terrain.debug_y2 = 0;
+
 // TODO reverse array initialization - faster to allocate array
 // memory in reverse (one big memory allocation rather than lots
 // of little increments)

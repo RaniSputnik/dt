@@ -37,6 +37,7 @@
   <rooms name="rooms">
     <room>rooms\rmBasicExample</room>
     <room>rooms\rmLayerExample</room>
+    <room>rooms\rmViewExample</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

@@ -58,7 +58,7 @@ if surface_exists(old_surf)
 {
     var dx1 = arg_x1 - old_gx1;
     var dy1 = arg_y1 - old_gy1;
-    var dx2 = arg_x2 - old_gy2;
+    var dx2 = arg_x2 - old_gx2;
     var dy2 = arg_y2 - old_gy2;
     surface_copy(arg_terrain.surface, -dx1*s,-dy1*s, old_surf);
     surface_free(old_surf);

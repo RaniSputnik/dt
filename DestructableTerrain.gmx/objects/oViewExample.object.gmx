@@ -8,7 +8,69 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Initialize the terrain
+
+global.terrain = terrain_create(64);
+global.terrain.image = bgDirt;
+terrain_set_visible_view(global.terrain,0);
+
+// Half of the map is ground
+for(var i = 0; i &lt;= global.terrain.width; i+=1)
+for(var j = 0; j &lt;= global.terrain.height; j+=1)
+{
+    var k = global.terrain.grid_index[i,j];
+    global.terrain.density[k] = j &gt; global.terrain.height*.5;
+}
+terrain_update_region(global.terrain, 0,0, global.terrain.width, global.terrain.height);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw holes and paint terrain
+var holesize = 32;
+if(mouse_check_button(mb_left))
+terrain_make_hole(global.terrain, mouse_x,mouse_y,holesize,false)
+if( mouse_check_button(mb_right))
+terrain_make_hole(global.terrain, mouse_x,mouse_y,holesize,true)
+</string>
+          </argument>
+        </arguments>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -61,6 +123,31 @@ view_yview[v] = vy;
 // This is CRITICAL - if the viewport isn't moved
 // then the outer regions of the terrain won't be drawn correctly
 terrain_set_visible_view(global.terrain, 0);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw the terrain
+
+terrain_draw(global.terrain);
 </string>
           </argument>
         </arguments>

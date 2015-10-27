@@ -29,7 +29,6 @@
 
 global.terrain = terrain_create(16);
 global.terrain.image = bgDirt;
-terrain_set_visible_view(global.terrain,0);
 
 // Half of the map is ground
 for(var i = 0; i &lt;= global.terrain.width; i+=1)
