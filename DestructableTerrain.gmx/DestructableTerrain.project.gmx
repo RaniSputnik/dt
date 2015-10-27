@@ -3,32 +3,42 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <NewExtensions/>
+  <NewExtensions>
+    <extension index="0">extensions\Destroyable Terrain</extension>
+  </NewExtensions>
   <sounds name="sound"/>
-  <sprites name="sprites"/>
+  <sprites name="sprites">
+    <sprite>sprites\sprPlayer</sprite>
+  </sprites>
   <backgrounds name="background">
     <background>background\bgDirt</background>
     <background>background\bgStone</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\terrain_create.gml</script>
-    <script>scripts\terrain_create_ext.gml</script>
-    <script>scripts\terrain_update.gml</script>
-    <script>scripts\terrain_update_region.gml</script>
-    <script>scripts\terrain_make_hole.gml</script>
-    <script>scripts\terrain_draw.gml</script>
-    <script>scripts\terrain_set_visible_region.gml</script>
-    <script>scripts\terrain_set_visible_view.gml</script>
-    <script>scripts\__create_triangles.gml</script>
-    <script>scripts\__create_triangle.gml</script>
-    <script>scripts\__interpolate.gml</script>
-    <script>scripts\__prepare_surface.gml</script>
-    <script>scripts\__redraw_region.gml</script>
-    <script>scripts\__linear_interpolate.gml</script>
+    <scripts name="terrain">
+      <script>scripts\terrain_create.gml</script>
+      <script>scripts\terrain_create_ext.gml</script>
+      <script>scripts\terrain_update.gml</script>
+      <script>scripts\terrain_update_region.gml</script>
+      <script>scripts\terrain_make_hole.gml</script>
+      <script>scripts\terrain_set_visible_region.gml</script>
+      <script>scripts\terrain_set_visible_view.gml</script>
+      <script>scripts\terrain_collision_point.gml</script>
+      <script>scripts\terrain_draw.gml</script>
+      <script>scripts\__create_triangles.gml</script>
+      <script>scripts\__create_triangle.gml</script>
+      <script>scripts\__prepare_surface.gml</script>
+      <script>scripts\__redraw_region.gml</script>
+      <script>scripts\__interpolate.gml</script>
+      <script>scripts\__linear_interpolate.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
-    <object>objects\oTerrain</object>
+    <objects name="terrain">
+      <object>objects\oTerrain</object>
+    </objects>
+    <object>objects\oPlayer</object>
     <object>objects\oExampleNavigator</object>
     <object>objects\oBasicExample</object>
     <object>objects\oLayerExample</object>

@@ -132,12 +132,6 @@ if background_exists(arg_terrain.image) {
     draw_set_blend_mode(bm_normal);
 }
 
-// Debug information
-arg_terrain.debug_x1 = px1;
-arg_terrain.debug_y1 = py1;
-arg_terrain.debug_x2 = px2-1;
-arg_terrain.debug_y2 = py2-1;
-
 // Reset the drawing surface and colour
 draw_set_colour(old_col);
 surface_reset_target();
