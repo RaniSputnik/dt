@@ -2,8 +2,8 @@
 /// Removes/creates terrain at point(x, y) 
 
 var arg_terrain = argument0;
-var arg_x = argument1;
-var arg_y = argument2;
+var arg_x = argument1 - arg_terrain.x;
+var arg_y = argument2 - arg_terrain.y;
 var arg_radius = argument3;
 var arg_destroy = argument4;
 

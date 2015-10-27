@@ -8,6 +8,7 @@
   <sprites name="sprites"/>
   <backgrounds name="background">
     <background>background\bgDirt</background>
+    <background>background\bgStone</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -30,9 +31,12 @@
     <object>objects\oTerrain</object>
     <object>objects\oExampleNavigator</object>
     <object>objects\oBasicExample</object>
+    <object>objects\oLayerExample</object>
+    <object>objects\oViewExample</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rmBasicExample</room>
+    <room>rooms\rmLayerExample</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

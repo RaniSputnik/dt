@@ -12,8 +12,14 @@ var arg_y1 = argument2;
 var arg_x2 = argument3;
 var arg_y2 = argument4;
 
-// TODO don't redraw outside of the current
-// visible region! It's a waste of time!
+// Limit the redraw the region to the 
+// current visible region of the terrain
+arg_x1 = max(round(arg_x1),arg_terrain.view_gx1);
+arg_y1 = max(round(arg_y1),arg_terrain.view_gy1);
+arg_x2 = min(round(arg_x2),arg_terrain.view_gx2);
+arg_y2 = min(round(arg_y2),arg_terrain.view_gy2);
+// Don't redraw if the region is of zero size
+if (arg_x1 >= arg_x2 or arg_y1 >= arg_y2) then exit;
 
 // Start drawing to the terrain surface
 __prepare_surface(arg_terrain);
@@ -26,10 +32,10 @@ var offset_y = -arg_terrain.view_gy1 * arg_terrain.scale;
 // Clear the drawing region
 var px1 = arg_x1 * arg_terrain.scale;
 var py1 = arg_y1 * arg_terrain.scale;
-var px2 = arg_x2 * arg_terrain.scale - 1;
-var py2 = arg_y2 * arg_terrain.scale - 1;
+var px2 = arg_x2 * arg_terrain.scale;
+var py2 = arg_y2 * arg_terrain.scale;
 draw_set_blend_mode_ext(bm_zero,bm_zero);
-draw_rectangle(px1+offset_x,py1+offset_y,px2+offset_x,py2+offset_y,false);
+draw_rectangle(px1+offset_x,py1+offset_y,px2+offset_x-1,py2+offset_y-1,false);
 draw_set_blend_mode(bm_normal);
 
 // Remember the previous drawing colour, it will
