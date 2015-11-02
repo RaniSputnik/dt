@@ -30,4 +30,4 @@ for(var gy = arg_y1; gy < arg_y2; gy++)
     __create_triangles(arg_terrain, p1,p2,p3,p4, gx,gy);
 }
 
-__redraw_region(arg_terrain, arg_x1,arg_y1,arg_x2,arg_y2);
+__make_dirty(arg_terrain, arg_x1,arg_y1,arg_x2,arg_y2);

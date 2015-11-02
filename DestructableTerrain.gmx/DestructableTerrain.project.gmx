@@ -39,6 +39,7 @@
       <script>scripts\__redraw_region.gml</script>
       <script>scripts\__interpolate.gml</script>
       <script>scripts\__linear_interpolate.gml</script>
+      <script>scripts\__make_dirty.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">

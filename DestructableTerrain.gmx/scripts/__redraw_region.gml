@@ -12,8 +12,7 @@ var arg_y1 = argument2;
 var arg_x2 = argument3;
 var arg_y2 = argument4;
 
-// Limit the redraw the region to the 
-// current visible region of the terrain
+// Limit the drawing region to the current visible area
 arg_x1 = max(round(arg_x1),arg_terrain.view_gx1);
 arg_y1 = max(round(arg_y1),arg_terrain.view_gy1);
 arg_x2 = min(round(arg_x2),arg_terrain.view_gx2);
@@ -22,7 +21,6 @@ arg_y2 = min(round(arg_y2),arg_terrain.view_gy2);
 if (arg_x1 >= arg_x2 or arg_y1 >= arg_y2) then exit;
 
 // Start drawing to the terrain surface
-__prepare_surface(arg_terrain);
 surface_set_target(arg_terrain.surface);
 
 // Calculate an adjustment for the view position

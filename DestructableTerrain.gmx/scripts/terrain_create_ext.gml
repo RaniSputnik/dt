@@ -33,6 +33,9 @@ terrain.view_gy1 = 0;
 terrain.view_gx2 = terrain.width;
 terrain.view_gy2 = terrain.height;
 
+// The number of regions that need repainting
+terrain.dirty_regions = 0;
+
 // TODO reverse array initialization - faster to allocate array
 // memory in reverse (one big memory allocation rather than lots
 // of little increments)

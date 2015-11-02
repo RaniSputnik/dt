@@ -10,4 +10,4 @@ var arg_background = argument1;
 // TODO check background provided exists
 
 arg_terrain.image = arg_background;
-__redraw_region(arg_terrain,0,0,arg_terrain.width,arg_terrain.height);
+__make_dirty(arg_terrain,0,0,arg_terrain.width,arg_terrain.height);

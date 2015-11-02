@@ -68,26 +68,26 @@ if surface_exists(old_surf)
     // If the view has moved left, repaint the left edge
     if (dx1 < 0) 
     {
-        __redraw_region(arg_terrain, arg_x1,max_y1,old_gx1,min_y2);
+        __make_dirty(arg_terrain, arg_x1,max_y1,old_gx1,min_y2);
     }
     // If the view has moved right, repaint the right edge
     if (dx2 > 0) 
     {
-        __redraw_region(arg_terrain, old_gx2,max_y1,arg_x2,min_y2);
+        __make_dirty(arg_terrain, old_gx2,max_y1,arg_x2,min_y2);
     }
     // If the view has extended upwards, repaint the top edge
     if (dy1 < 0)
     {
-        __redraw_region(arg_terrain, arg_x1,arg_y1,arg_x2,old_gy1);
+        __make_dirty(arg_terrain, arg_x1,arg_y1,arg_x2,old_gy1);
     }
     // If the view has extended downwards, repaint the bottom edge
     if (dy2 > 0) 
     {
-        __redraw_region(arg_terrain, arg_x1,old_gy2,arg_x2,arg_y2);
+        __make_dirty(arg_terrain, arg_x1,old_gy2,arg_x2,arg_y2);
     }    
 }
 // If we didn't have an old surface then we need to redraw everything
 else
 {
-    __redraw_region(arg_terrain,0,0,arg_terrain.width,arg_terrain.height);
+    __make_dirty(arg_terrain,0,0,arg_terrain.width,arg_terrain.height);
 }
