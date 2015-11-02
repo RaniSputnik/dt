@@ -25,10 +25,46 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>/// README!!!
+///
+/// This example demonstrates the use of a smaller surface
+/// to draw a large area of terrain. 
+///
+/// To speed up the drawing of terrain, the terrain is drawn
+/// to a surface only when the terrain is updated. If you are
+/// creating a large area of terrain, the surface size may exceed
+/// reasonable proportions. To circumvent this issue, you can
+/// set the terrain redraw region using the following two scripts;
+///
+/// terrain_set_visible_region(terrain, x1,y1,x2,y2);
+/// terrain_set_visible_view(terrain, view);
+///
+/// If the view is moving, remember to update the visible region
+/// otherwise you will have areas of terrain that are visible on
+/// screen, but will not be redrawn.
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>/// Initialize the terrain
 
 global.terrain = terrain_create(32);
-global.terrain.image = bgDirt;
 terrain_set_visible_view(global.terrain,0);
 
 // Half of the map is ground
@@ -123,6 +159,37 @@ view_yview[v] = vy;
 // This is CRITICAL - if the viewport isn't moved
 // then the outer regions of the terrain won't be drawn correctly
 terrain_set_visible_view(global.terrain, 0);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw the instructions
+
+draw_set_color(c_black);
+draw_set_halign(fa_left);
+draw_set_valign(fa_top);
+
+var v = 0;
+draw_text(5,5,"View position: "+string(view_xview[v])+","+string(view_yview[v]));
+draw_text(5,5,"#This example demonstrates creating a large#terrain grid using a surface that is only#the size of the viewport");
 </string>
           </argument>
         </arguments>

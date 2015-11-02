@@ -25,16 +25,50 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>/// README!!!
+///
+/// There are a couple of different ways to do layers with
+/// this terrain engine. One simple way is to create a background
+/// that includes the layers in the image.
+///
+/// The other example demonstrated here is to create multiple
+/// terrain objects that span a given area in the room. This gives
+/// you more flexibility but adds complexity as you must record
+/// collisions and draw each terrain layer rather than working with
+/// a single "global" terrain object.
+///
+/// I may add multiple images for a single terrain object into the
+/// API, but as it stands that is not possible.
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>/// Initialize the terrain
 
 var scale = 16;
 w = 320;
-h = 320;
+h = 160;
 
-global.terrain_dirt = terrain_create_ext((room_width-w)&gt;&gt;1,room_height-h*2,w/scale,h/scale,scale);
-global.terrain_stone = terrain_create_ext((room_width-w)&gt;&gt;1,room_height-h,w/scale,h,scale);
-global.terrain_dirt.image = bgDirt;
-global.terrain_stone.image = bgStone;
+global.terrain_dirt = terrain_create_ext((room_width-w)&gt;&gt;1,0,w/scale,h/scale,scale);
+global.terrain_stone = terrain_create_ext((room_width-w)&gt;&gt;1,h,w/scale,h/scale,scale);
+terrain_set_image_from_background(global.terrain_dirt,bgDirt);
+terrain_set_image_from_background(global.terrain_stone,bgStone);
 </string>
           </argument>
         </arguments>

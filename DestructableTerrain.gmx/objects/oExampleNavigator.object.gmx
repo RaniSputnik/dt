@@ -67,6 +67,7 @@ var w = surface_get_width(application_surface);
 var h = surface_get_height(application_surface);
 var cx = w &gt;&gt; 1;
 
+draw_set_font(fMeiryo);
 draw_set_color(c_black);
 // bug is preventing me from centering text using WebGL in Chrome
 if os_browser == browser_not_a_browser

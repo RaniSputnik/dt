@@ -83,7 +83,7 @@ if(keyboard_check(ord("D")) &amp;&amp; ! mo)
 }
 if(!keyboard_check(ord("A")) &amp;&amp; !keyboard_check(ord("D"))) image_speed = 0
 
-if(keyboard_check(vk_space) &amp;&amp; ma) vspeed = -4
+if(keyboard_check(ord("W")) &amp;&amp; ma) vspeed = -4
 </string>
           </argument>
         </arguments>

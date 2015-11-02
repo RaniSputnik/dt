@@ -28,16 +28,13 @@
             <string>/// Initialize the terrain
 
 global.terrain = terrain_create(16);
-global.terrain.image = bgDirt;
+terrain_set_image_from_background(global.terrain, bgDirt);
+var tw = terrain_get_grid_width(global.terrain);
+var th = terrain_get_grid_height(global.terrain);
+terrain_set_density_region(global.terrain,0,0,tw,th&gt;&gt;1);
 
 // Half of the map is ground
-for(var i = 0; i &lt;= global.terrain.width; i+=1)
-for(var j = 0; j &lt;= global.terrain.height; j+=1)
-{
-    var k = global.terrain.grid_index[i,j];
-    global.terrain.density[k] = j &gt; global.terrain.height*.5;
-}
-terrain_update_region(global.terrain, 0,0, global.terrain.width, global.terrain.height);
+
 
 global.grid = false;
 </string>
@@ -90,7 +87,7 @@ terrain_make_hole(global.terrain, mouse_x,mouse_y,holesize,true)
             <kind>1</kind>
             <string>/// Toggle wireframe mode
 
-if(keyboard_check_pressed(ord('W'))) {
+if(keyboard_check_pressed(ord('1'))) {
     global.terrain.wireframe = !global.terrain.wireframe;
     terrain_update(global.terrain);
 }
@@ -116,7 +113,7 @@ if(keyboard_check_pressed(ord('W'))) {
             <kind>1</kind>
             <string>/// Toggle grid mode
 
-if(keyboard_check_pressed(ord('G'))) {
+if(keyboard_check_pressed(ord('2'))) {
     global.grid = !global.grid;
 }
 </string>
@@ -142,12 +139,15 @@ if(keyboard_check_pressed(ord('G'))) {
           <argument>
             <kind>1</kind>
             <string>/// Draw the instructions + frame rate and triangle count
-draw_set_color(c_green);
+draw_set_color(c_black);
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 draw_text(5,5,"Left mouse to create terrain, right mouse to destroy");
-draw_text(5,5,"#fps: " + string(fps));
-draw_text(5,5,"##triangles: " + string(global.terrain.triangles));
+draw_text(5,5,"#WASD to move the player");
+draw_text(5,5,"##1 to toggle wireframe");
+draw_text(5,5,"###2 to toggle grid display");
+draw_text(5,5,"####fps: " + string(fps));
+draw_text(5,5,"#####triangles: " + string(global.terrain.triangles));
 </string>
           </argument>
         </arguments>

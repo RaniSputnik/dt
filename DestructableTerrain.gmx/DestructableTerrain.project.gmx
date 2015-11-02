@@ -21,6 +21,11 @@
       <script>scripts\terrain_create_ext.gml</script>
       <script>scripts\terrain_get_width.gml</script>
       <script>scripts\terrain_get_height.gml</script>
+      <script>scripts\terrain_grid_get_width.gml</script>
+      <script>scripts\terrain_get_grid_height.gml</script>
+      <script>scripts\terrain_image_set_background.gml</script>
+      <script>scripts\terrain_density_set.gml</script>
+      <script>scripts\terrain_density_set_region.gml</script>
       <script>scripts\terrain_update.gml</script>
       <script>scripts\terrain_update_region.gml</script>
       <script>scripts\terrain_make_hole.gml</script>
@@ -36,6 +41,9 @@
       <script>scripts\__linear_interpolate.gml</script>
     </scripts>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\fMeiryo</font>
+  </fonts>
   <objects name="objects">
     <objects name="terrain">
       <object>objects\oTerrain</object>
