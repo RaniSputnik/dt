@@ -67,8 +67,8 @@ h = 160;
 
 global.terrain_dirt = terrain_create_ext((room_width-w)&gt;&gt;1,0,w/scale,h/scale,scale);
 global.terrain_stone = terrain_create_ext((room_width-w)&gt;&gt;1,h,w/scale,h/scale,scale);
-terrain_set_image_from_background(global.terrain_dirt,bgDirt);
-terrain_set_image_from_background(global.terrain_stone,bgStone);
+terrain_image_set_background(global.terrain_dirt,bgDirt);
+terrain_image_set_background(global.terrain_stone,bgStone);
 </string>
           </argument>
         </arguments>

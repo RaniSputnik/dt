@@ -28,13 +28,11 @@
             <string>/// Initialize the terrain
 
 global.terrain = terrain_create(16);
-terrain_set_image_from_background(global.terrain, bgDirt);
-var tw = terrain_get_grid_width(global.terrain);
-var th = terrain_get_grid_height(global.terrain);
-terrain_set_density_region(global.terrain,0,0,tw,th&gt;&gt;1);
-
+terrain_image_set_background(global.terrain, bgDirt);
+var tw = terrain_grid_get_width(global.terrain);
+var th = terrain_grid_get_height(global.terrain);
 // Half of the map is ground
-
+terrain_density_set_region(global.terrain,0,th/2,tw,th,1);
 
 global.grid = false;
 </string>

@@ -189,7 +189,6 @@ draw_set_valign(fa_top);
 
 var v = 0;
 draw_text(5,5,"View position: "+string(view_xview[v])+","+string(view_yview[v]));
-draw_text(5,5,"#This example demonstrates creating a large#terrain grid using a surface that is only#the size of the viewport");
 </string>
           </argument>
         </arguments>
