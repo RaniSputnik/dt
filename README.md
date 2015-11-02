@@ -1,7 +1,12 @@
-GMDestruct
-==========
+Destroyable Terrain
+===================
 
-Blazing fast destructable terrain library for GameMaker. Maintains an array of terrain density and uses the marching squares algorithm for rasterization.
+Blazing fast destructable terrain library for GameMaker. Maintains an array of terrain density and uses the marching squares algorithm for rasterization. Uses surfaces to avoid redrawing every frame, will only be redrawn as modifications to the terrain grid are made.
+
+## Links
+
+- Support the project by [purchasing the extension from the GameMaker Marketplace](https://marketplace.yoyogames.com/assets/2891/destroyable-terrain)
+- Check out the [support topic on the GameMaker Community](http://gmc.yoyogames.com/index.php?showtopic=680526)
 
 ## Credit
 
